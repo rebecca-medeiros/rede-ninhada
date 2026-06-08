@@ -1,14 +1,14 @@
 :root {
   --background: #FAF7F2;
-  --foreground: #2D2A26;
+  --foreground: #4A4A4A;
   
-  --color-primary: #7C5C8C;
-  --color-primary-dark: #4A3552;
-  --color-primary-light: #F3EFF5;
+  --color-primary: #6D28D9;
+  --color-primary-dark: #5B21B6;
+  --color-primary-light: #F5F3FF;
   
-  --color-accent: #E88358;
-  --color-accent-dark: #C9663D;
-  --color-accent-light: #FDF1EB;
+  --color-accent: #F6A25C;
+  --color-accent-dark: #DB853D;
+  --color-accent-light: #FFF6EF;
   
   --color-card: #FFFFFF;
   --color-border: #E3DFD8;
@@ -20,8 +20,8 @@
   --border-radius-lg: 24px;
   
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.03);
-  --shadow-md: 0 8px 30px rgba(124, 92, 140, 0.06);
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 8px 30px rgba(109, 40, 217, 0.05);
 }
 
 html {
@@ -41,7 +41,7 @@ body {
   flex-direction: column;
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-outfit), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-nunito), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
