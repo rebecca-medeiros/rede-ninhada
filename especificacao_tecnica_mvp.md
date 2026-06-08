@@ -22,6 +22,8 @@ Todas as decisões de produto, design e código devem ser guiadas por estes seis
 *   **Nome Oficial:** Rede Ninhada
 *   **Proposta de Valor:**
     > *"A Rede Ninhada conecta animais, protetores, organizações e pessoas que desejam ajudar, fortalecendo a rede de acolhimento animal de São Luís e região."*
+*   **Diretriz Arquitetural de Compartilhamento:**
+    > *"A Rede Ninhada deve ser construída para privilegiar compartilhamento e descoberta orgânica. Cada perfil de animal deve funcionar como uma página pública facilmente compartilhável em redes sociais e aplicativos de mensagens."*
 *   **Diretrizes de Interface (UI/UX) de Acolhimento:**
     *   **Paleta de Cores:** Fundo creme aconchegante (`#FAF7F2`), roxo suave (comunidade e acolhimento) e laranja pêssego (CTAs e destaques prioritários).
     *   **Identidade Visual:** Espaçamento generoso, tipografia humanista e cards de cantos suaves. Foco no storytelling do animal e nas dores da comunidade (necessidades reais de suprimentos, lares temporários e voluntariado).
@@ -38,19 +40,19 @@ Embora a mensagem principal do MVP seja mantida, estão documentadas alternativa
 
 ## 3. Arquitetura de Informação & UX
 
-### 3.1 Sitemap do MVP
+### 3.1 Sitemap do MVP (Next.js App Router)
 
 ```mermaid
 graph TD
-    Home["1. Home Page (Portal de Acolhimento)"]
+    Home["1. Home Page (Portal de Acolhimento - /)"]
     
     Catalogo["2. Galeria de Animais (/animais)"]
-    DetalheAnimal["2.1 Detalhe do Animal (/animais/:id)"]
+    DetalheAnimal["2.1 Detalhe do Animal (/animais/[slug])"]
     FormLead["2.1.1 Interesse em Adoção (Modal)"]
     
     ComoAjudar["3. Como Ajudar Agora (/ajuda)"]
     
-    PerfilONG["4. Perfil da ONG/Protetor (/ongs/:id)"]
+    PerfilONG["4. Perfil da ONG/Protetor (/ongs/[slug])"]
     
     PainelONG["5. Painel da ONG (/painel)"]
     CadastrarAnimal["5.1 Cadastrar Novo Animal (/painel/animais/novo)"]
@@ -147,7 +149,7 @@ erDiagram
         jsonb social_links
         jsonb donation_methods
         string logo_url
-        boolean is_approved
+        string approval_status "pending / approved / rejected"
         timestamp created_at
     }
     
@@ -155,6 +157,7 @@ erDiagram
         uuid id PK
         uuid organization_id FK
         string name
+        string slug UK
         string species
         string sex
         string approximate_age
@@ -216,7 +219,7 @@ erDiagram
 -- Habilitar extensão para UUID
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- 1. Organizações / Protetores
+-- 1. Organizações / Protetores (Atualizado com approval_status)
 CREATE TABLE public.organizations (
     id UUID PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
@@ -228,15 +231,17 @@ CREATE TABLE public.organizations (
     social_links JSONB DEFAULT '{}'::jsonb,
     donation_methods JSONB DEFAULT '{}'::jsonb,
     logo_url VARCHAR(500),
-    is_approved BOOLEAN DEFAULT FALSE NOT NULL,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
+    approval_status VARCHAR(50) DEFAULT 'pending' NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    CONSTRAINT chk_approval_status CHECK (approval_status IN ('pending', 'approved', 'rejected'))
 );
 
--- 2. Animais
+-- 2. Animais (Atualizado com slug)
 CREATE TABLE public.animals (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     organization_id UUID NOT NULL REFERENCES public.organizations(id) ON DELETE CASCADE,
     name VARCHAR(100) NOT NULL,
+    slug VARCHAR(150) UNIQUE NOT NULL, -- URL amigável ex: 'mel-gata-tricolor'
     species VARCHAR(50) NOT NULL,
     sex VARCHAR(10) NOT NULL,
     approximate_age VARCHAR(50) NOT NULL,
@@ -296,6 +301,7 @@ CREATE TABLE public.adoption_leads (
 
 -- Índices otimizados
 CREATE INDEX idx_animals_search_lookup ON public.animals(species, status, city, neighborhood, adoption_priority);
+CREATE INDEX idx_animals_slug ON public.animals(slug);
 CREATE INDEX idx_needs_active_lookup ON public.organization_needs(is_active, category);
 CREATE INDEX idx_animals_published ON public.animals(published_at DESC);
 ```
@@ -335,12 +341,23 @@ As métricas exibidas na Home Page serão alimentadas por consultas rápidas e d
 
 *   **Animais Divulgados:** `SELECT COUNT(*) FROM animals;`
 *   **Adoções Realizadas:** `SELECT COUNT(*) FROM animals WHERE status = 'Adotado';`
-*   **Organizações Participantes:** `SELECT COUNT(*) FROM organizations WHERE is_approved = true;`
+*   **Organizações Participantes:** `SELECT COUNT(*) FROM organizations WHERE approval_status = 'approved';`
 *   **Necessidades Atendidas:** `SELECT COUNT(*) FROM organization_needs WHERE is_active = false;`
 
 ---
 
-## 7. Roadmap de Evolução pós-MVP (Foco: Dev Solo)
+## 7. Open Graph Dinâmico (SEO)
+
+Cada página de animal `/animais/[slug]` usará a função `generateMetadata` do Next.js para gerar metadados dinâmicos lidos do Supabase:
+
+*   **og:title:** `[Nome do Animal] procura um lar - Rede Ninhada`
+*   **og:description:** `[Espécie] [tags de temperamento], vacinado e castrado aguardando adoção em [Bairro], São Luís.`
+*   **og:image:** URL da primeira foto do animal salva na galeria.
+*   **og:url:** `https://redeninhada.com.br/animais/[slug]`
+
+---
+
+## 8. Roadmap de Evolução pós-MVP (Foco: Dev Solo)
 
 O roadmap consolida a evolução futura sem inflar o escopo do MVP.
 
