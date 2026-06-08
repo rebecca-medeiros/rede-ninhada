@@ -1,0 +1,206 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+  width: 100%;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Categorias de Abas */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+  width: 100%;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 4px;
+}
+
+.tabButton {
+  background: none;
+  border: none;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #666;
+  cursor: pointer;
+  border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+  transition: var(--transition-smooth);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -6px;
+}
+
+.tabButton:hover {
+  color: var(--color-primary);
+  background-color: rgba(124, 92, 140, 0.05);
+}
+
+.activeTab {
+  color: var(--color-primary-dark);
+  border-bottom: 3px solid var(--color-primary);
+}
+
+/* Lista de Acordeões (Faq) */
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+/* Estilo Semântico details/summary */
+.faqItem {
+  width: 100%;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  transition: var(--transition-smooth);
+}
+
+.faqItem[open] {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.faqQuestion {
+  padding: 20px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  cursor: pointer;
+  list-style: none; /* Esconde setinha padrão Chrome/Safari */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  transition: var(--transition-smooth);
+}
+
+.faqQuestion::-webkit-details-marker {
+  display: none; /* Esconde setinha padrão Safari */
+}
+
+/* Ícone de seta estilizado */
+.faqQuestion::after {
+  content: "＋";
+  font-size: 16px;
+  color: var(--color-primary);
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.faqItem[open] .faqQuestion::after {
+  content: "－";
+  transform: rotate(180deg);
+}
+
+.faqAnswer {
+  padding: 0 24px 20px 24px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555;
+  border-top: 1px solid transparent;
+  animation: slideDown 0.3s ease-out;
+}
+
+.faqItem[open] .faqAnswer {
+  border-top: 1px solid #f5f5f4;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CTA Card no rodapé */
+.ctaCard {
+  background-color: var(--color-primary-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: 32px;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.ctaTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.ctaText {
+  font-size: 14px;
+  color: #555;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+.ctaButton {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-smooth);
+  text-decoration: none;
+}
+
+.ctaButton:hover {
+  background-color: var(--color-primary-dark);
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 28px;
+  }
+  .tabs {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    border-bottom: none;
+  }
+  .tabButton {
+    border-bottom: 2px solid var(--color-border);
+    text-align: center;
+  }
+  .activeTab {
+    border-bottom: 2px solid var(--color-primary);
+  }
+}

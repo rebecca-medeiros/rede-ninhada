@@ -1,0 +1,344 @@
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 20px;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  padding: 0;
+  transition: var(--transition-smooth);
+}
+
+.backButton:hover {
+  color: var(--color-primary-dark);
+  transform: translateX(-4px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+}
+
+/* Coluna da Esquerda: Imagens & Galeria */
+.mediaColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mainImageContainer {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  background-color: var(--color-primary-light);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.noImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-size: 80px;
+}
+
+.thumbnailGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.thumbnail {
+  height: 80px;
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  background-color: var(--color-primary-light);
+  transition: var(--transition-smooth);
+}
+
+.thumbnailActive {
+  border-color: var(--color-primary);
+}
+
+.thumbnailImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Coluna da Direita: Informações */
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.badgeRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.badgeUrgente { background-color: var(--color-error); }
+.badgeDestaque { background-color: var(--color-primary); }
+.badgeCuidados { background-color: #616161; }
+.badgeLongaEspera { background-color: #3f51b5; }
+
+.title {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+}
+
+.metaRow {
+  font-size: 15px;
+  color: #666;
+  display: flex;
+  gap: 12px;
+}
+
+.waitingTime {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Ficha Técnica */
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 8px;
+}
+
+.specsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f5f5f5;
+  font-size: 15px;
+}
+
+.specLabel {
+  color: #666;
+  font-weight: 500;
+}
+
+.specValue {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+/* Sobre Mim (Tags de Personalidade) */
+.tagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* História */
+.storyText {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+  white-space: pre-line;
+}
+
+/* Box da ONG & CTA */
+.actionCard {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: 28px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.orgArea {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.orgLogo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+}
+
+.orgPlaceholder {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  border: 1px solid var(--color-border);
+}
+
+.orgInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.orgName {
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.orgLocation {
+  font-size: 12px;
+  color: #666;
+}
+
+.ctaButton {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border: none;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(232, 131, 88, 0.2);
+}
+
+.ctaButton:hover {
+  background-color: var(--color-accent-dark);
+  transform: translateY(-1px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .mainImageContainer {
+    height: 320px;
+  }
+  .title {
+    font-size: 32px;
+  }
+}
+
+/* Pix da ONG na Ficha */
+.pixArea {
+  border-top: 1px dashed var(--color-border);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pixLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.pixKeyWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fafaf9;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  padding: 8px 12px;
+  gap: 12px;
+}
+
+.pixKey {
+  font-family: monospace;
+  font-size: 13px;
+  color: var(--foreground);
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.copyPixBtn {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  border: none;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-smooth);
+}
+
+.copyPixBtn:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.pixHolder {
+  font-size: 11px;
+  color: #666;
+}
