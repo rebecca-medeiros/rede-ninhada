@@ -1,0 +1,269 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.pageTitle {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-primary-dark);
+}
+
+.pageDescription {
+  color: #666;
+  margin-bottom: 32px;
+  font-size: 15px;
+}
+
+.card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: 32px;
+  box-shadow: var(--shadow-subtle);
+}
+
+/* Abas */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 2px;
+}
+
+.tabButton {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+  transition: var(--transition-smooth);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -4px;
+}
+
+.tabButton:hover {
+  color: var(--color-primary-dark);
+  background-color: rgba(124, 92, 140, 0.05);
+}
+
+.activeTab {
+  color: var(--color-primary-dark);
+  border-bottom: 3px solid var(--color-primary);
+}
+
+/* Tabela */
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.table th {
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--color-border);
+  color: var(--color-primary-dark);
+  font-weight: 600;
+}
+
+.table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Elementos da Tabela */
+.logoMini {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+}
+
+.logoPlaceholderMini {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid var(--color-border);
+}
+
+.orgName {
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.orgSlug {
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.orgDesc {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+  max-width: 250px;
+}
+
+.contactLink {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+.contactLink:hover {
+  text-decoration: underline;
+  color: var(--color-primary-dark);
+}
+
+.badgeRole {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  background-color: #e0e0e0;
+  color: #444;
+}
+
+.adminRole {
+  background-color: #e8f5e9;
+  color: var(--color-success);
+}
+
+/* Mensagens de Feedback */
+.message {
+  padding: 12px 16px;
+  border-radius: var(--border-radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.error {
+  background-color: #ffebee;
+  color: var(--color-error);
+  border: 1px solid #ffcdd2;
+}
+
+.success {
+  background-color: #e8f5e9;
+  color: var(--color-success);
+  border: 1px solid #c8e6c9;
+}
+
+/* Ações */
+.actionsCell {
+  display: flex;
+  gap: 8px;
+}
+
+.actionButton {
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.approveButton {
+  background-color: #e8f5e9;
+  color: var(--color-success);
+  border: 1px solid #c8e6c9;
+}
+
+.approveButton:hover {
+  background-color: var(--color-success);
+  color: #ffffff;
+}
+
+.rejectButton {
+  background-color: #ffebee;
+  color: var(--color-error);
+  border: 1px solid #ffcdd2;
+}
+
+.rejectButton:hover {
+  background-color: var(--color-error);
+  color: #ffffff;
+}
+
+.actionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.textMuted {
+  font-size: 12px;
+  color: #888;
+  font-style: italic;
+}
+
+/* Acesso Negado */
+.deniedContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.deniedContainer h2 {
+  font-size: 24px;
+  color: var(--color-error);
+  margin-bottom: 12px;
+}
+
+.deniedContainer p {
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.backButton {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.backButton:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.emptyState {
+  color: #777;
+  text-align: center;
+  padding: 40px 0;
+  font-style: italic;
+}

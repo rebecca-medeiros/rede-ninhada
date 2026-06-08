@@ -1,0 +1,122 @@
+.tableContainer {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-subtle);
+  overflow: hidden;
+  margin-top: 24px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 15px;
+}
+
+.th {
+  background-color: #fafaf9;
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.td {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.tr:hover {
+  background-color: #fcfcfb;
+}
+
+.petName {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.adopterInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.adopterName {
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.adopterLocation {
+  font-size: 12px;
+  color: #666;
+}
+
+.message {
+  font-size: 14px;
+  color: #444;
+  max-width: 400px;
+  white-space: pre-wrap;
+}
+
+/* Status das Badges */
+.statusSelect {
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: #fafafa;
+  cursor: pointer;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.statusSelect:focus {
+  border-color: var(--color-primary);
+}
+
+.statusNovo { color: #1565c0; background-color: #e3f2fd; border-color: #bbdefb; }
+.statusEmContato { color: #f57f17; background-color: #fffde7; border-color: #fff9c4; }
+.statusAprovado { color: #2e7d32; background-color: #e8f5e9; border-color: #c8e6c9; }
+.statusRejeitado { color: #c62828; background-color: #ffebee; border-color: #ffcdd2; }
+
+/* Ações */
+.actionsRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.btnWhatsapp {
+  background-color: #25d366;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-smooth);
+}
+
+.btnWhatsapp:hover {
+  background-color: #128c7e;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 64px 20px;
+  color: #777;
+}
+
+.date {
+  font-size: 12px;
+  color: #777;
+}

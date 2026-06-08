@@ -1,0 +1,257 @@
+.headerArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.buttonAdd {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-smooth);
+}
+
+.buttonAdd:hover {
+  background-color: var(--color-accent-dark);
+}
+
+/* Grid de Animais */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.petCard {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.petCard:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.imageArea {
+  position: relative;
+  height: 180px;
+  background-color: var(--color-primary-light);
+}
+
+.petImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.noImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-size: 48px;
+}
+
+.badgePriority {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.badgeUrgente { background-color: var(--color-error); }
+.badgeDestaque { background-color: var(--color-primary); }
+.badgeNormal { background-color: rgba(0, 0, 0, 0.4); }
+
+.petInfo {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.petHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.petName {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.badgeStatus {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.statusDisponivel {
+  background-color: #e8f5e9;
+  color: var(--color-success);
+}
+.statusReservado {
+  background-color: #fffde7;
+  color: #f57f17;
+}
+.statusAdotado {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+.statusArquivado {
+  background-color: #eeeeee;
+  color: #666666;
+}
+
+.petMeta {
+  font-size: 13px;
+  color: #666;
+  display: flex;
+  gap: 8px;
+}
+
+.cardActions {
+  display: flex;
+  border-top: 1px solid var(--color-border);
+  margin-top: auto;
+}
+
+.btnAction {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  color: var(--color-primary-dark);
+}
+
+.btnAction:first-child {
+  border-right: 1px solid var(--color-border);
+}
+
+.btnAction:hover {
+  background-color: var(--color-primary-light);
+}
+
+.btnDelete:hover {
+  background-color: #ffebee;
+  color: var(--color-error);
+}
+
+/* Upload de Imagens no Formulário */
+.uploadSection {
+  border: 2px dashed var(--color-border);
+  border-radius: var(--border-radius-sm);
+  padding: 32px;
+  text-align: center;
+  background-color: #fafafa;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.uploadSection:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.previewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.previewContainer {
+  position: relative;
+  height: 100px;
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.previewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.removeImgBtn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background-color: rgba(198, 40, 40, 0.9);
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Checklist e Matrix de Tags */
+.tagGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  padding: 16px;
+  background-color: #fafafa;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.tagLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--foreground);
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 64px 0;
+  color: #777;
+  grid-column: span 3;
+}
